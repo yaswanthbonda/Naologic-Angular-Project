@@ -1,0 +1,34 @@
+/* Import Circular Std font */
+@import url('https://naologic-com-assets.naologic.com/fonts/circular-std/circular-std.css');
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Circular-Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1a1a1a;
+  overflow: hidden;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Override ng-select styles globally */
+.ng-select {
+  .ng-select-container {
+    background-color: #ffffff;
+  }
+
+  .ng-dropdown-panel {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+}

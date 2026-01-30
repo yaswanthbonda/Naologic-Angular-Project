@@ -1,0 +1,91 @@
+<div class="panel-backdrop" (click)="onBackdropClick()">
+  <div class="work-order-panel" (click)="onPanelClick($event)">
+    <div class="panel-header">
+      <div class="header-content">
+        <h2 class="panel-title">Work Order Details</h2>
+        <p class="panel-subtitle">Specify the dates, name and status for this order</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn-cancel" (click)="onCancel()" type="button">
+          Cancel
+        </button>
+        <button class="btn-create" (click)="onSubmit()" type="button" [disabled]="workOrderForm.invalid">
+          {{ mode === 'create' ? 'Create' : 'Save' }}
+        </button>
+      </div>
+    </div>
+
+    <form [formGroup]="workOrderForm" class="panel-body">
+      <!-- Work Order Name -->
+      <div class="form-group">
+        <label class="form-label" for="name">Work Order Name</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          formControlName="name"
+          placeholder="Enter work order name"
+          [class.is-invalid]="workOrderForm.get('name')?.invalid && workOrderForm.get('name')?.touched"
+        />
+      </div>
+
+      <!-- Work Center -->
+      <div class="form-group">
+        <label class="form-label" for="workCenter">Work Center</label>
+        <ng-select
+          id="workCenter"
+          [items]="workCenters"
+          bindLabel="data.name"
+          bindValue="docId"
+          formControlName="workCenterId"
+          placeholder="Select work center"
+          [clearable]="false"
+          [searchable]="false"
+          [class.is-invalid]="workOrderForm.get('workCenterId')?.invalid && workOrderForm.get('workCenterId')?.touched"
+        >
+        </ng-select>
+      </div>
+
+      <!-- Status -->
+      <div class="form-group">
+        <label class="form-label" for="status">Status</label>
+        <ng-select
+          id="status"
+          [items]="statusOptions"
+          bindLabel="label"
+          bindValue="value"
+          formControlName="status"
+          placeholder="Select status"
+          [clearable]="false"
+          [searchable]="false"
+          [class.is-invalid]="workOrderForm.get('status')?.invalid && workOrderForm.get('status')?.touched"
+        >
+        </ng-select>
+      </div>
+
+      <!-- Start Date -->
+      <div class="form-group">
+        <label class="form-label" for="startDate">Start date</label>
+        <input
+          type="date"
+          id="startDate"
+          class="form-control"
+          formControlName="startDate"
+          [class.is-invalid]="workOrderForm.get('startDate')?.invalid && workOrderForm.get('startDate')?.touched"
+        />
+      </div>
+
+      <!-- End Date -->
+      <div class="form-group">
+        <label class="form-label" for="endDate">End date</label>
+        <input
+          type="date"
+          id="endDate"
+          class="form-control"
+          formControlName="endDate"
+          [class.is-invalid]="workOrderForm.get('endDate')?.invalid && workOrderForm.get('endDate')?.touched"
+        />
+      </div>
+    </form>
+  </div>
+</div>

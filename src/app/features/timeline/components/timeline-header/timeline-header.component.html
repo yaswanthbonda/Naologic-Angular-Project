@@ -1,0 +1,21 @@
+<div class="timeline-header">
+    <div class="header-left">
+      <h1 class="title">Work Orders</h1>
+    </div>
+    <div class="header-right">
+        <div class="timescale-label-wrapper">
+            <label class="timescale-label">Timescale</label>
+        </div>
+      <ng-select
+        [items]="timeScaleOptions"
+        bindLabel="label"
+        bindValue="value"
+        [(ngModel)]="selectedTimeScale"
+        (change)="onTimeScaleChange(selectedTimeScale)"
+        [clearable]="false"
+        [searchable]="false"
+        class="timescale-select"
+      >
+      </ng-select>
+    </div>
+  </div>

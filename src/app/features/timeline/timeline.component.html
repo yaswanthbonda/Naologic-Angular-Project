@@ -1,0 +1,42 @@
+<div class="timeline-container">
+    <app-timeline-header
+      [selectedTimeScale]="selectedTimeScale"
+      (timeScaleChange)="onTimeScaleChange($event)"
+    ></app-timeline-header>
+  
+   <app-timeline-grid
+      [workCenters]="workCenters"
+      [workOrders]="workOrders"
+      [timeScale]="selectedTimeScale"
+      (timelineClick)="onTimelineClick($event.workCenterId, $event.date)"
+      (editWorkOrder)="onEditWorkOrder($event)"
+      (deleteWorkOrder)="onDeleteWorkOrder($event)"
+    ></app-timeline-grid>
+  
+    <app-work-order-panel
+      *ngIf="showPanel"
+      [mode]="panelMode"
+      [workOrder]="selectedWorkOrder"
+      [workCenters]="workCenters"
+      [prefilledWorkCenterId]="clickedWorkCenterId"
+      [prefilledStartDate]="clickedDate"
+      (close)="onPanelClose()"
+      (save)="onWorkOrderSave($event)"
+    ></app-work-order-panel>
+  </div>
+  
+  <div 
+    class="global-dropdown-menu" 
+    *ngIf="showDropdownMenu"
+    [style.top.px]="dropdownMenuPosition.top"
+    [style.left.px]="dropdownMenuPosition.left"
+  >
+    <button class="dropdown-item" (click)="onDropdownEdit()">
+      Edit
+    </button>
+    <button class="dropdown-item delete" (click)="onDropdownDelete()">
+      Delete
+    </button>
+  </div>
+  
+  <div class="menu-backdrop" *ngIf="showDropdownMenu" (click)="closeDropdownMenu()"></div>

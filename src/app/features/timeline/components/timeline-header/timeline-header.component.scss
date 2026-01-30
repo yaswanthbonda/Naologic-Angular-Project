@@ -1,0 +1,113 @@
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 32px 40px;
+  background-color: #ffffff;
+  border-bottom: none;
+
+  .header-left {
+    .title {
+      font-family: 'Circular-Std', sans-serif;
+      width: 142px;
+      height: 34px;
+      color: rgba(3, 9, 41, 1);
+      font-size: 24px;
+      font-weight: 500;
+      font-style: medium;
+    }
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 0;
+
+    .timescale-label {
+      font-family: 'Circular-Std', sans-serif;
+      height: 25px;
+      color: rgba(104, 113, 150, 1);
+      font-size: 13px;
+      font-weight: 400;
+      margin: 0;
+      background-color: rgba(241, 243, 248, 0.75);
+      padding: 4px 10px;
+      border-radius: 5px 0px 0px 5px;
+      display: flex;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .timescale-select {
+      width: 100px;
+
+      ::ng-deep {
+        .ng-select-container {
+          border: 1px solid #e5e7eb;
+          border-radius: 0px 6px 6px 0px;
+          border-left: none;
+          min-height: 25px !important;
+          height: 25px !important;
+          font-family: 'Circular-Std', sans-serif;
+          font-size: 13px;
+          background-color: #ffffff;
+        }
+
+        .ng-value-container {
+          padding: 0 8px !important;
+          height: 25px !important;
+
+          .ng-value {
+            height: 25px !important;
+            line-height: 25px !important;
+            padding: 0 !important;
+          }
+
+          .ng-input {
+            padding: 0 !important;
+            top: 0 !important;
+          }
+        }
+
+        .ng-value-label {
+          color: rgba(62, 64, 219, 1) !important;
+          font-family: 'Circular-Std', sans-serif;
+          font-size: 13px !important;
+          font-weight: 500;
+          line-height: 25px !important;
+          padding: 0 !important;
+        }
+
+        .ng-arrow-wrapper {
+          padding: 0 8px 0 0 !important;
+          height: 25px !important;
+          display: flex;
+          align-items: center;
+
+          .ng-arrow {
+            border-color: rgba(62, 64, 219, 1) transparent transparent;
+            border-width: 5px 5px 0;
+          }
+        }
+
+        .ng-clear-wrapper {
+          display: none;
+        }
+
+        &.ng-select-opened {
+          .ng-arrow {
+            border-color: transparent transparent rgba(62, 64, 219, 1);
+            border-width: 0 5px 5px;
+          }
+        }
+
+        &.ng-select-focused {
+          .ng-select-container {
+            border-color: #e5e7eb;
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}

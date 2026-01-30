@@ -1,0 +1,56 @@
+.timeline-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fafb;
+}
+
+// Global dropdown menu styles
+.global-dropdown-menu {
+  position: fixed;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+  overflow: hidden;
+
+  .dropdown-item {
+    display: block;
+    padding: 8px 16px;
+    background: #ffffff;
+    border: none;
+    text-align: left;
+    font-family: 'Circular-Std', sans-serif;
+    width: 150px;
+    color: rgba(47, 48, 89, 1);
+    font-size: 14px;
+    font-weight: 400;
+    font-style: book;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    line-height: 1.5;
+
+    &:hover {
+      background-color: #f9fafb;
+    }
+
+    &.delete {
+      color: #5b5fed;
+
+      &:hover {
+        background-color: #f0f1ff;
+      }
+    }
+  }
+}
+
+.menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: transparent;
+}

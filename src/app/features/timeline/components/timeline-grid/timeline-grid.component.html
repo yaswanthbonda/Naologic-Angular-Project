@@ -1,0 +1,67 @@
+<div class="timeline-grid-container">
+    <!-- Header with dates -->
+    <div class="timeline-grid-header">
+      <div class="work-center-column header-cell">
+        <span class="header-title">Work Center</span>
+      </div>
+      <div class="timeline-scroll-wrapper">
+        <div class="timeline-header-dates" [style.width.px]="dateColumns.length * columnWidth">
+          <div 
+            class="date-column" 
+            *ngFor="let col of dateColumns"
+            [style.width.px]="columnWidth"
+            [class.today]="col.isToday"
+          >
+            <span class="date-label">{{ col.label }}</span>
+            <span class="current-label" *ngIf="col.isToday">Current month</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Grid with work centers and work orders -->
+    <div class="timeline-grid-body">
+      <div 
+        class="timeline-row" 
+        *ngFor="let workCenter of workCenters"
+        (click)="onRowClick($event, workCenter.docId)"
+      >
+        <div class="work-center-column">
+          <span class="work-center-name">{{ workCenter.data.name }}</span>
+        </div>
+        <div class="timeline-scroll-wrapper">
+          <div class="timeline-dates" [style.width.px]="dateColumns.length * columnWidth">
+            <!-- Grid cells -->
+            <div 
+              class="date-cell" 
+              *ngFor="let col of dateColumns"
+              [style.width.px]="columnWidth"
+              [class.today-column]="col.isToday"
+            ></div>
+  
+            <!-- Today indicator line -->
+            <div 
+              class="today-indicator" 
+              *ngIf="isTodayVisible()"
+              [style.left.px]="getTodayPosition()"
+            ></div>
+  
+            <!-- Empty state hint -->
+            <div class="empty-hint" *ngIf="getWorkOrdersForWorkCenter(workCenter.docId).length === 0">
+              <span>Click to add dates</span>
+            </div>
+  
+            <!-- Work order bars -->
+            <app-work-order-bar
+              *ngFor="let order of getWorkOrdersForWorkCenter(workCenter.docId)"
+              [workOrder]="order"
+              [left]="getWorkOrderPosition(order).left"
+              [width]="getWorkOrderPosition(order).width"
+              (edit)="onEditWorkOrder($event)"
+              (delete)="onDeleteWorkOrder($event)"
+            ></app-work-order-bar>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

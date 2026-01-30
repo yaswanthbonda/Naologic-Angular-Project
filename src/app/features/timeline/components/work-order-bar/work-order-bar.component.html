@@ -1,0 +1,32 @@
+<div 
+  class="work-order-bar" 
+  [style.left.px]="left" 
+  [style.width.px]="width"
+  [style.background-color]="statusConfig.bgColor"
+  [style.border-left]="'4px solid ' + statusConfig.color"
+  [title]="getTooltip()"
+>
+  <div class="bar-content" (click)="onBarContentClick($event)">
+    <span class="order-name">{{ workOrder.data.name }}</span>
+    <span 
+      class="status-badge"
+      [style.background-color]="statusConfig.color"
+    >
+      {{ statusConfig.label }}
+    </span>
+  </div>
+  
+  <div class="actions">
+    <button 
+      class="menu-button" 
+      (click)="toggleMenu($event)"
+      type="button"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="3" r="1.5" fill="currentColor"/>
+        <circle cx="8" cy="8" r="1.5" fill="currentColor"/>
+        <circle cx="8" cy="13" r="1.5" fill="currentColor"/>
+      </svg>
+    </button>
+  </div>
+</div>
